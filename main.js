@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const data = require('./data_file')
 
 app.on('ready', () => {
     console.log('ready');
@@ -45,3 +46,7 @@ ipcMain.on('abrir-janela-sobre', () => {
 ipcMain.on('fechar-janela-sobre', () => {
     sobreWindow.close();
 });
+
+ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
+    data.salvaDados(curso, tempoEstudado)
+}) 
