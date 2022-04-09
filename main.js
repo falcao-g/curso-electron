@@ -1,5 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const data = require('./data_file')
+const { app, BrowserWindow, ipcMain, Tray, Menu } = require('electron');
+const data = require('./data')
+const template = require('./template')
 
 app.on('ready', () => {
     console.log('ready');
@@ -12,6 +13,10 @@ app.on('ready', () => {
             enableRemoteModule: true,
         }
     })
+
+    tray = new Tray(__dirname + '/app/img/icon-tray.png')
+    trayMenu = template.geraTrayTemplate(mainWindow)
+    tray.setContextMenu(Menu.buildFromTemplate(trayMenu))
 
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);	
 })

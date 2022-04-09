@@ -35,7 +35,16 @@ module.exports = {
                 });
     },
     pegaDados(curso){
-        let arquivoDoCurso = __dirname + '/data/'+ curso + '.json';
+        console.log('a')
+        let arquivoDoCurso = './data/'+ curso + '.json';
         return jsonfile.readFile(arquivoDoCurso);
+    },
+    getCursos() {
+        let arquivos = fs.readdirSync(__dirname + '/data/')
+        arquivos = arquivos.map((arquivo) => {
+            arquivo = arquivo.replace('.json','')
+            return arquivo
+        })
+        return arquivos
     }
 }
