@@ -2,9 +2,10 @@ const { app, BrowserWindow, ipcMain, Tray, Menu } = require('electron');
 const data = require('./data')
 const template = require('./template')
 
+let mainWindow;
 app.on('ready', () => {
     console.log('ready');
-    let mainWindow = new BrowserWindow({
+    mainWindow = new BrowserWindow({
         width: 600,
         height: 400,
         webPreferences: {
@@ -55,3 +56,8 @@ ipcMain.on('fechar-janela-sobre', () => {
 ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
     data.salvaDados(curso, tempoEstudado)
 }) 
+
+ipcMain.on('curso-adicionado', (event, curso) => {
+    trayMenu = template.adicionaCurso(curso, mainWindow)
+    tray.setContextMenu(Menu.buildFromTemplate(trayMenu))
+})
