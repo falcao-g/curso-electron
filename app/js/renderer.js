@@ -27,10 +27,18 @@ botaoPlay.addEventListener('click', function() {
         timer.parar(curso.textContent)
         botaoPlay.src = 'img/play-button.svg'
         play = false
+        new Notification('Alura timer', {
+            body: 'O timer do curso ' + curso.textContent + ' foi pausado!',
+            icon: 'img/stop-button.png'
+        })
     } else {
         timer.iniciar(tempo)
         botaoPlay.src = 'img/stop-button.svg'
         play = true
+        new Notification('Alura timer', {
+            body: 'O timer do curso ' + curso.textContent + ' foi iniciado!',
+            icon: 'img/play-button.png'
+        })
     }
 })
 
@@ -48,4 +56,8 @@ botao_adicionar.addEventListener('click', () => {
     curso.textContent = novoCurso
     tempo.textContent = '00:00:00'
     ipcRenderer.send('curso-adicionado', novoCurso)
+})
+
+ipcRenderer.on('atalho-iniciar-parar', () => {
+    botaoPlay.click()
 })
