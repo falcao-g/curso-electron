@@ -17,9 +17,14 @@ app.on('ready', () => {
 
     tray = new Tray(__dirname + '/app/img/icon-tray.png')
     trayMenu = template.geraTrayTemplate(mainWindow)
-    tray.setContextMenu(Menu.buildFromTemplate(trayMenu))
+    tray.setContextMenu(Menu.buildFromTemplate(trayMenu))	
+    
 
-    mainWindow.loadURL(`file://${__dirname}/app/index.html`);	
+    let templateMenu = template.geraMenuPrincipalTemplate(app);
+    let menuPrincipal = Menu.buildFromTemplate(templateMenu);
+    Menu.setApplicationMenu(menuPrincipal);
+
+    mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 })
 
 app.on('window-all-closed', () => {
