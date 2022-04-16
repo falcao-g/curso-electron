@@ -20,17 +20,13 @@ module.exports = {
         }
 
         jsonfile.writeFile(arquivoDoCurso,dados, {spaces: 2})
-                .then(() => {
-                    console.log('Tempo salvo com sucesso');
-                }).catch((err) => {
+                .catch((err) => {
                     console.log(err);
                 })
     },
     criaArquivoDeCurso(nomeArquivo, conteudoArquivo){
         return jsonfile.writeFile(nomeArquivo,conteudoArquivo)
-                .then(() => {
-                    console.log('Arquivo Criado')
-                }).catch((err) => {
+                .catch((err) => {
                     console.log(err);
                 });
     },
