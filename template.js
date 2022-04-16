@@ -1,8 +1,7 @@
 const data = require('./data')
-const {ipcMain} = require('electron')
+const {app, ipcMain} = require('electron')
 
 module.exports = {
-    templateInicial: null,
     geraTrayTemplate(win) {
         let template = [
             {
@@ -25,20 +24,20 @@ module.exports = {
             })
         })
 
-        this.templateInicial = template
-        return template
-    }, adicionaCurso(curso, win) {
-        this.templateInicial.push({
-            label: curso,
-            type: 'radio',
-            click: () => {
-                win.send('curso-trocado', curso)
+        template.push(
+            {
+                type: 'separator'
             },
-            checked: true
-        })
+            {
+                label: 'Fechar',
+                click: () => {
+                    app.quit()
+                }
+            }
+        )
 
-        return this.templateInicial
-    }, geraMenuPrincipalTemplate(app){
+        return template
+    },  geraMenuPrincipalTemplate(app){
         let templateMenu = [
             {
                 label: 'View',
