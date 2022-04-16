@@ -43,6 +43,7 @@ botaoPlay.addEventListener('click', function() {
 })
 
 ipcRenderer.on('curso-trocado', (event, nome_curso) => {
+    botaoPlay.click()
     curso.textContent = nome_curso
     data.pegaDados(nome_curso)
         .then((dados) => {
@@ -51,11 +52,14 @@ ipcRenderer.on('curso-trocado', (event, nome_curso) => {
 })
 
 botao_adicionar.addEventListener('click', () => {
-    let novoCurso = campo_adicionar.value
-    campo_adicionar.value = ''
-    curso.textContent = novoCurso
-    tempo.textContent = '00:00:00'
-    ipcRenderer.send('curso-adicionado', novoCurso)
+    if (campo_adicionar.value.length > 0) {
+        botaoPlay.click()
+        let novoCurso = campo_adicionar.value
+        campo_adicionar.value = ''
+        curso.textContent = novoCurso
+        tempo.textContent = '00:00:00'
+        ipcRenderer.send('curso-adicionado', novoCurso)
+    }
 })
 
 ipcRenderer.on('atalho-iniciar-parar', () => {

@@ -21,8 +21,7 @@ app.on('ready', () => {
     
 
     let templateMenu = template.geraMenuPrincipalTemplate(app);
-    let menuPrincipal = Menu.buildFromTemplate(templateMenu);
-    Menu.setApplicationMenu(menuPrincipal);
+    Menu.setApplicationMenu(Menu.buildFromTemplate(templateMenu));
 
      globalShortcut.register('CmdorCtrl+Shift+S', () => {
         mainWindow.send('atalho-iniciar-parar')
@@ -67,6 +66,7 @@ ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
 }) 
 
 ipcMain.on('curso-adicionado', (event, curso) => {
+    data.salvaDados(curso, '00:00:00')
     trayMenu = template.adicionaCurso(curso, mainWindow)
     tray.setContextMenu(Menu.buildFromTemplate(trayMenu))
 })
