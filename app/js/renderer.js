@@ -75,3 +75,8 @@ botao_adicionar.addEventListener('click', () => {
 ipcRenderer.on('atalho-iniciar-parar', () => {
     botaoPlay.click()
 })
+
+ipcRenderer.on('atalho-reiniciar', () => {
+    tempo.textContent = '00:00:00'
+    botaoPlay.click()
+})

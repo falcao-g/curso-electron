@@ -23,9 +23,13 @@ app.on('ready', () => {
     let templateMenu = template.geraMenuPrincipalTemplate(app);
     Menu.setApplicationMenu(Menu.buildFromTemplate(templateMenu));
 
-     globalShortcut.register('CmdorCtrl+Shift+S', () => {
+    globalShortcut.register('CmdorCtrl+Shift+S', () => {
         mainWindow.send('atalho-iniciar-parar')
-     })
+    })
+
+    globalShortcut.register('CmdorCtrl+Shift+R', () => {
+        mainWindow.send('atalho-reiniciar')
+    })
 
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 })
