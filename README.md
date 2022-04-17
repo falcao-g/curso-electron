@@ -16,7 +16,11 @@ Em relação ao projeto, fiz significas alterações:
 
 <hr>
 
-Seguem imagens de como ficou o aplicativo final:
+<h2>Seguem imagens de como ficou o aplicativo final:</h2>
+
+Aplicativo principal:<br>
 ![image](https://user-images.githubusercontent.com/60127788/163724104-9185b484-e9a4-4ad2-8e8d-cc510d36ca7d.png)
-![image](https://user-images.githubusercontent.com/60127788/163724116-4a11c78b-5ae6-449f-8e53-4750d825e47b.png)
+<br>Página de sobre:<br>
+![image](https://user-images.githubusercontent.com/60127788/163724197-0c454992-5c26-4f5c-be66-cb936dd2466c.png)
+<br>Menu da system tray:<br>
 ![image](https://user-images.githubusercontent.com/60127788/163724164-b029a397-f141-4b68-baa3-1940fcd5bd73.png)
