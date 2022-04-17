@@ -38,8 +38,10 @@ module.exports = {
     getCursos() {
         let arquivos = fs.readdirSync(__dirname + '/data/')
         arquivos = arquivos.map((arquivo) => {
-            arquivo = arquivo.replace('.json','')
-            return arquivo
+            if (arquivo != '.gitignore') {
+                arquivo = arquivo.replace('.json','')
+                return arquivo
+            }
         })
         return arquivos
     }
